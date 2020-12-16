@@ -7,38 +7,33 @@ d = {e.split(": ")[0]: list(map(lambda x: [int(x.split("-")[0]), int(x.split("-"
 m = list(map(int, mine.split("\n")[1].split(",")))
 t = [list(map(int, e.split(","))) for e in tickets.strip().split("\n")[1:]]
 
+# Valid values for any field:
 valid = set()
-for _, v in d.items():
+for v in d.values():
 	for r in v:
 		for n in range(r[0], r[1] + 1):
 			valid.add(n)
 
-error = 0
-vt = []
-for ct in t:
-	is_valid = True
-	for field in ct:
-		if field not in valid:
-			is_valid = False
-			break
-	if is_valid:
-		vt.append(True)
-	else:
-		vt.append(False)
+from functools import reduce
 
-v = [t[i] for i in range(len(t)) if vt[i]]
+# Valid tickets:
+v = [t[i] for i in range(len(t)) if reduce(lambda x, y: x and y in valid, t[i], True)]
+# Possible values for each field:
 pi = {k: [n for i in range(len(d[k])) for n in range(d[k][i][0], d[k][i][1] + 1)] for k in d}
-pf = [list(pi.keys())[:] for _ in m]
+# Possible fields for each index in the tickets:
+pf = [list(pi.keys()) for _ in m]
 
-for ct in v:
-	for field in pi:
-		for i in range(len(ct)):
+# Detect and remove invalid fields for each index:
+for ct in v:	# Iterate over valid tickets.
+	for field in pi:	# Iterate over fields.
+		for i in range(len(ct)):	# Iterate over field values in the current ticket.
 			if ct[i] not in pi[field] and field in pf[i]:
 				pf[i].remove(field)
 				#print(i, ct[i], field, pf[i])
 				#if i == len(ct) - 1:
 				#	print()
 
+# Sequentially delimit each field
 while sum(map(len, pf)) > len(pf):
 	for f in pf:
 		if len(f) == 1:

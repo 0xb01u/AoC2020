@@ -7,18 +7,19 @@ d = {e.split(": ")[0]: list(map(lambda x: [int(x.split("-")[0]), int(x.split("-"
 m = list(map(int, mine.split("\n")[1].split(",")))
 t = [list(map(int, e.split(","))) for e in tickets.strip().split("\n")[1:]]
 
+# Valid values for any field:
 valid = set()
-for _, v in d.items():
+for v in d.values():
 	for r in v:
 		for n in range(r[0], r[1] + 1):
 			valid.add(n)
 
 error = 0
 for ct in t:
-	for field in ct:
-		if field not in valid:
+	for field_val in ct:
+		if field_val not in valid:
 			#print(field)
-			error -=- field
+			error -=- field_val
 
 # NOT COUNTED lol
 # for field in m:
