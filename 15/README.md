@@ -58,8 +58,4 @@ Both parts of this puzzle are complete! They provide two gold stars: **
 
 At this point, you should [return to your Advent calendar](https://adventofcode.com/2020) and try another puzzle.
 
-Your puzzle input was <code class="puzzle-input">0,1,4,13,15,12,16`.
-
-You can also [Shareon
-  [Twitter](https://twitter.com/intent/tweet?text=I%27ve+completed+%22Rambunctious+Recitation%22+%2D+Day+15+%2D+Advent+of+Code+2020&amp;url=https%3A%2F%2Fadventofcode%2Ecom%2F2020%2Fday%2F15&amp;related=ericwastl&amp;hashtags=AdventOfCode)
-[Mastodon](https://adventofcode.com/2020/day/javascript:void(0);)] this puzzle.
+Your puzzle input was `0,1,4,13,15,12,16`.

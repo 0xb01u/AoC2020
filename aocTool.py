@@ -55,7 +55,7 @@ for day in days:
 		description_md = re.sub(r'<script.*?/script>', "", description_md)
 		description_md = re.sub(r'</?em.*?>', "**", description_md)
 		description_md = re.sub(r'(<pre><code>)|(</code></pre>)', "```\n", description_md)
-		description_md = re.sub(r'</?code>', "`", description_md)
+		description_md = re.sub(r'</?code(.*?)>', "`", description_md)
 		description_md = re.sub(r'</?p>', "\n", description_md)
 		description_md = re.sub(r'<span.*?>', "", description_md)
 		description_md = re.sub(r'</span>', "", description_md)
@@ -73,6 +73,7 @@ for day in days:
 		description_md = re.sub(r'\]\(([^/h])', rf'](https://adventofcode.com/{year}/day/\1', description_md)
 		description_md = re.sub(r'`\*\*(.*)\*\*`', r'**`\1`**', description_md)	# Correct bold code
 		description_md = re.sub(r'\n\n', "\n", description_md)
+		description_md = re.sub(r'\nYou can also.*', "", description_md, flags=re.S)
 
 		open(f"./{day}/README.md", "w").write(description_md)
 

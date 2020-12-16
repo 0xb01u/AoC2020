@@ -139,7 +139,3 @@ Both parts of this puzzle are complete! They provide two gold stars: **
 At this point, you should [return to your Advent calendar](https://adventofcode.com/2020) and try another puzzle.
 
 If you still want to see it, you can [get your puzzle input](https://adventofcode.com/2020/day/10/input).
-
-You can also [Shareon
-  [Twitter](https://twitter.com/intent/tweet?text=I%27ve+completed+%22Adapter+Array%22+%2D+Day+10+%2D+Advent+of+Code+2020&amp;url=https%3A%2F%2Fadventofcode%2Ecom%2F2020%2Fday%2F10&amp;related=ericwastl&amp;hashtags=AdventOfCode)
-[Mastodon](https://adventofcode.com/2020/day/javascript:void(0);)] this puzzle.
