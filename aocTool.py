@@ -71,6 +71,7 @@ for day in days:
 		description_md = re.sub(r'<form(.|\n)*?/form>', "", description_md)
 		description_md = re.sub(r'\]\(/', r'](https://adventofcode.com/', description_md)
 		description_md = re.sub(r'\]\(([^/h])', rf'](https://adventofcode.com/{year}/day/\1', description_md)
+		description_md = re.sub(r'`\*\*(.*)\*\*`', r'**`\1`**', description_md)	# Correct bold code
 		description_md = re.sub(r'\n\n', "\n", description_md)
 
 		open(f"./{day}/README.md", "w").write(description_md)

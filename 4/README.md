@@ -39,7 +39,7 @@ The third passport is interesting; the **only missing field** is `cid`, so it lo
 
 The fourth passport is missing two fields, `cid` and `byr`. Missing `cid` is fine, but missing any other field is not, so this passport is **invalid**.
 
-According to the above rules, your improved system would report `**2**` valid passports.
+According to the above rules, your improved system would report **`2`** valid passports.
 
 Count the number of **valid** passports - those that have all required fields. Treat `cid` as optional. **In your batch file, how many passports are valid?**
 
