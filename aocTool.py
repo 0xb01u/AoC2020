@@ -88,5 +88,5 @@ if " -g" in options:
 		msg = options.split("\"")[1]
 
 	system("git add -A")
-	system(f"git commit -m Automatic aocTool commit: \"{msg}\"")
+	system(f"git commit -m \"Automatic aocTool commit: \'{msg}\'\"")
 	system("git push origin master")

@@ -48,5 +48,13 @@ for k in pf:
 		#print(k)
 		dp *= m[pf.index(k)]
 
+# Helping people:
+#j = [pf.index([e]) for e in d.keys()]
+#print(j)
+#dp = 1
+#for k in d:
+#	if "departure" in k:
+#		dp *= m[j[list(d.keys()).index(k)]]
+
 print(f"Product of departures: {dp}")
 assert dp == 603409823791
