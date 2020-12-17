@@ -85,7 +85,8 @@ if " -g" in options:
 	msg = f"Day " + str(days)[1:-1]
 
 	if " -m" in options:
-		msg = options.split("\"")[1]
+		print(options)
+		msg = options.split("-m ")[1]
 
 	system("git add -A")
 	system(f"git commit -m \"Automatic aocTool commit: \'{msg}\'\"")
