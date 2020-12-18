@@ -19,11 +19,6 @@ class Num():
 	def __sub__(self, other):
 		return Num(self.n * other.n)
 
-r = []
-for op in ops:
-	#print(op)
-	exec(f"r.append({op})")
-
-int_r = [n.n for n in r]
-print(sum(int_r))
-assert sum(int_r) == 1408133923393
+#[print(op) for op in ops]
+print(f"Sum of results: {sum([eval(op).n for op in ops])}")
+assert sum([eval(op).n for op in ops]) == 1408133923393
