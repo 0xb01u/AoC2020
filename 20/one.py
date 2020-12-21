@@ -12,7 +12,6 @@ IDs = [int(l.splitlines()[0].split(" ")[-1][:-1]) for l in cameras]
 
 tile_map = {str(tiles[i]): IDs[i] for i in range(len(IDs))}
 neighbors = {ID: {} for ID in IDs}
-reverse = {}
 
 for tile1 in tiles:
 	for tile2 in tiles:
