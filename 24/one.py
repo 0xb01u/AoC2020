@@ -5,27 +5,48 @@
 to_flip = open("input.txt").readlines()
 flipped = {}
 
+# Every hexagonal tile in de matrix is 1-aligned or 2-aligned.
+# The manhattan distance from a tile to any of its neightbors is 2.
+# Here's a quick drawing of the initial floor, to understand it better:
+# (Up: columns; left: rows)
+#     -3  -2  -1   0   1   2   3
+#
+# -3   W       W       W       W
+# -2       W       W       W
+# -1   W       W       W       W
+#  0       W      Ref       W
+#  1   W       W       W       W
+#  2       W       W       W
+#  3   W       W       W       W
+#
+# The tile with coords (0, 0) is the reference tile.
+#
+# The tiles' are stored in a dictionary, with their coords
+# as keys, and their color as value.
+# Number 1 (or True) represents color black.
+# Number 0 (or False) represents color white
+
 for tile in to_flip:
 	coords = [0, 0]
 	d = ""
 	for c in tile:
 		if c == "e":
-			coords[0] -=- 10
+			coords[0] -=- 2
 			if d == "n":
-				coords[1] -= 10
+				coords[1] -= 2
 			elif d == "s":
-				coords[1] -=- 10
+				coords[1] -=- 2
 			if d != "":
-				coords[0] -= 5
+				coords[0] -= 1
 				d = ""
 		elif c == "w":
-			coords[0] -= 10
+			coords[0] -= 2
 			if d == "n":
-				coords[1] -= 10
+				coords[1] -= 2
 			elif d == "s":
-				coords[1] -=- 10
+				coords[1] -=- 2
 			if d != "":
-				coords[0] -=- 5
+				coords[0] -=- 1
 				d = ""
 		else:
 			d = c

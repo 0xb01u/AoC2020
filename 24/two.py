@@ -5,27 +5,48 @@
 to_flip = open("input.txt").readlines()
 color = {}
 
+# Every hexagonal tile in de matrix is 1-aligned or 2-aligned.
+# The manhattan distance from a tile to any of its neightbors is 2.
+# Here's a quick drawing of the initial floor, to understand it better:
+# (Up: columns; left: rows)
+#     -3  -2  -1   0   1   2   3
+#
+# -3   W       W       W       W
+# -2       W       W       W
+# -1   W       W       W       W
+#  0       W      Ref       W
+#  1   W       W       W       W
+#  2       W       W       W
+#  3   W       W       W       W
+#
+# The tile with coords (0, 0) is the reference tile.
+#
+# The tiles' are stored in a dictionary, with their coords
+# as keys, and their color as value.
+# Number 1 (or True) represents color black.
+# Number 0 (or False) represents color white
+
 for tile in to_flip:
 	coords = [0, 0]
 	d = ""
 	for c in tile:
 		if c == "e":
-			coords[0] -=- 10
+			coords[0] -=- 2
 			if d == "n":
-				coords[1] -= 10
+				coords[1] -= 2
 			elif d == "s":
-				coords[1] -=- 10
+				coords[1] -=- 2
 			if d != "":
-				coords[0] -= 5
+				coords[0] -= 1
 				d = ""
 		elif c == "w":
-			coords[0] -= 10
+			coords[0] -= 2
 			if d == "n":
-				coords[1] -= 10
+				coords[1] -= 2
 			elif d == "s":
-				coords[1] -=- 10
+				coords[1] -=- 2
 			if d != "":
-				coords[0] -=- 5
+				coords[0] -=- 1
 				d = ""
 		else:
 			d = c
@@ -38,6 +59,11 @@ for tile in to_flip:
 
 #print(color)
 
+'''
+# === FIRST SOLUTION USED ===
+# All the tiles which could be flipped (and more) were
+# generated before calculating the flips.
+
 x_min = min([e[0] for e in color.keys()])
 x_max = max([e[0] for e in color.keys()])
 y_min = min([e[1] for e in color.keys()])
@@ -46,22 +72,35 @@ y_max = max([e[1] for e in color.keys()])
 #print(x_min, x_max, y_min, y_max)
 
 # Slow but steady:
-for i in range(x_min - 10*100, x_max + 10*100, 5):
-	for j in range(y_min - 10*100, y_max + 10*100, 10):
+for i in range(x_min - 2*20, x_max + 2*20, 1):
+	for j in range(y_min - 2*20, y_max + 2*20, 2):
 		if (i, j) not in color:
 			color[(i, j)] = 0
 		#else:
 		#	print(i, j)
+'''
+
+# Add initial neighbors:
+new_color = color.copy()
+for tile in color:
+		for neighbor in [(2, 0), (1, 2), (-1, 2), (-2, 0), (1, -2), (-1, -2)]:
+			neighbor_tile = (tile[0] + neighbor[0], tile[1] + neighbor[1])
+			if neighbor_tile not in color:
+				new_color[neighbor_tile] = 0
+color = new_color
 
 for i in range(100):
 	new_color = color.copy()
 
 	for tile in color:
 		black_neighbors = 0
-		for neighbor in [(10, 0), (5, 10), (-5, 10), (-10, 0), (5, -10), (-5, -10)]:
-			if (tile[0] + neighbor[0], tile[1] + neighbor[1]) in color:
-				if color[(tile[0] + neighbor[0], tile[1] + neighbor[1])]:
+		for neighbor in [(2, 0), (1, 2), (-1, 2), (-2, 0), (1, -2), (-1, -2)]:
+			neighbor_tile = (tile[0] + neighbor[0], tile[1] + neighbor[1])
+			if neighbor_tile in color:
+				if color[neighbor_tile]:
 					black_neighbors -=- 1
+			else:
+				new_color[neighbor_tile] = 0
 		if color[tile]:
 			if black_neighbors == 0 or black_neighbors > 2:
 				new_color[tile] = 0
@@ -80,5 +119,5 @@ for i in range(100):
 		pass
 
 print()
-print(f"Black tiles after 100 days: {black}")
+print(f"Black tiles after 20 days: {black}")
 assert black == 3802
