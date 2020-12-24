@@ -5,6 +5,8 @@
 cups = [int(e) for e in open("input.txt").read().strip()]
 current = cups[0]
 
+# Indices is a linked (hash-)list. The cup labels are the keys,
+# and each key contains its clock-wise next cup as value.
 indices = {cups[i]: cups[(i + 1) % len(cups)] for i in range(len(cups))}
 
 indices[cups[-1]] = max(cups) + 1
@@ -12,18 +14,21 @@ for i in range(max(cups) + 1, 1000000 + 1):
 	indices[i] = i + 1
 indices[1000000] = cups[0]
 MAX = 1000000
-LEN = MAX + 1
 #MAX = max(cups)
 
 for i in range(10*MAX):
+	# Picked cups:
 	pick = []
 	c = current
 	for j in range(3):
 		pick.append(indices[c])
 		c = pick[-1]
 
+	# Link the current cup with the cup
+	# next to the last one picked:
 	indices[current] = indices[c]
 
+	# Destiny cup:
 	dest = current - 1
 	if dest < 1:
 		dest = MAX
@@ -32,12 +37,15 @@ for i in range(10*MAX):
 		if dest < 1:
 			dest = MAX
 
-	c = indices[current]
-	n = 1
-
+	# Link the last picked cup with the
+	# cup next to the destination cup:
 	indices[pick[2]] = indices[dest]
+	# Link the destination cup with the
+	# first picked cup.
 	indices[dest] = pick[0]
 
+	# Select the clock-wise next cup to
+	# the currently selected one.
 	current = indices[current]
 
 dest1 = indices[1]
