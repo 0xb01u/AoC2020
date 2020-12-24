@@ -81,3 +81,4 @@ for i in range(100):
 
 print()
 print(f"Black tiles after 100 days: {black}")
+assert black == 3802
