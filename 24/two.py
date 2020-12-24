@@ -5,8 +5,8 @@
 to_flip = open("input.txt").readlines()
 color = {}
 
-# Every hexagonal tile in de matrix is 1-aligned or 2-aligned.
-# The manhattan distance from a tile to any of its neightbors is 2.
+# Every column of hexagonal tiles in de matrix is odd-row or even-row aligned.
+# The manhattan distance from a tile to any of its neightbors is always 2.
 # Here's a quick drawing of the initial floor, to understand it better:
 # (Up: columns; left: rows)
 #     -3  -2  -1   0   1   2   3
@@ -14,14 +14,14 @@ color = {}
 # -3   W       W       W       W
 # -2       W       W       W
 # -1   W       W       W       W
-#  0       W      Ref       W
+#  0       W      Ref      W
 #  1   W       W       W       W
 #  2       W       W       W
 #  3   W       W       W       W
 #
 # The tile with coords (0, 0) is the reference tile.
 #
-# The tiles' are stored in a dictionary, with their coords
+# The tiles are stored in a dictionary, with their coords
 # as keys, and their color as value.
 # Number 1 (or True) represents color black.
 # Number 0 (or False) represents color white
@@ -61,6 +61,7 @@ for tile in to_flip:
 
 '''
 # === FIRST SOLUTION USED ===
+#
 # All the tiles which could be flipped (and more) were
 # generated before calculating the flips.
 
@@ -89,6 +90,7 @@ for tile in color:
 				new_color[neighbor_tile] = 0
 color = new_color
 
+# Day loop:
 for i in range(100):
 	new_color = color.copy()
 
