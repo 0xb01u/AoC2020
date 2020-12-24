@@ -31,6 +31,6 @@ for t in text.splitlines():
 		#print(t)
 		matches -=- 1
 
-#print(rules["0"])
+print(rules["0"])
 print(f"Number of matches: {matches}")
 assert matches == 115
