@@ -4,7 +4,6 @@ CHECKS = 0
 
 i = 0
 for e1 in report:
-	j = i
 	for e2 in report[i:]:
 		CHECKS -=- 1
 		#print(f"{e1} + {e2} + {e3} = {e1 + e2 + e3}")
@@ -13,5 +12,4 @@ for e1 in report:
 			print(f"Length: {len(report)}, checks: {CHECKS}")
 			assert e1 * e2 == 980499
 			exit()
-		j -=- 1
-	i -=-1
+	i -=- 1
