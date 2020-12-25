@@ -27,7 +27,7 @@ end
 --print(loops["door"], loops["card"])
 --{'door': 9374311, 'card': 16650209}
 value = 1
-for i = 1,loops["door"] do
+for i = 1, loops["door"] do
 	value = hash(value, card_pkey)
 end
 
@@ -35,7 +35,7 @@ print("Encryption key (card): " .. value)
 assert(value == 18433997)
 
 value = 1
-for i = 1,loops["card"] do
+for i = 1, loops["card"] do
 	value = hash(value, door_pkey)
 end
 

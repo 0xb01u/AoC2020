@@ -2,7 +2,6 @@ package.path = package.path .. ";../modules/?.lua"
 local tools = require "tools"
 
 database = tools.readlines("input.txt")
-table.remove(database, #database)
 passwords = {}
 letters = {}
 lowest = {}
@@ -18,7 +17,7 @@ for i, e in pairs(database) do
 end
 
 VALID = 0
-for i = 1,#database do
+for i = 1, #database do
 	_, char_count = passwords[i]:gsub(letters[i], letters[i])
 	if lowest[i] <= char_count and char_count <= highest[i] then
 		VALID = VALID- -1

@@ -1,4 +1,4 @@
-seats = open("input.txt").readlines()[:-1]
+seats = open("input.txt").readlines()
 rows = [seat[:7] for seat in seats]
 columns = [seat[7:-1] for seat in seats]
 

@@ -2,7 +2,6 @@ package.path = package.path .. ";../modules/?.lua"
 local tools = require "tools"
 
 database = tools.readlines("input.txt")
-table.remove(database, #database)
 passwords = {}
 allowed = {}
 first = {}
@@ -18,7 +17,7 @@ for i, e in pairs(database) do
 end
 
 VALID = 0
-for i = 1,#database do
+for i = 1, #database do
 	if (passwords[i]:sub(first[i], first[i]) == allowed[i])
 		~= (passwords[i]:sub(last[i], last[i]) == allowed[i]) then
 		VALID = VALID- -1

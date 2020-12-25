@@ -1,4 +1,4 @@
-trees = [list(e[:-1]) * 73 for e in open("input.txt").readlines()[:-1]]
+trees = [list(e[:-1]) * 73 for e in open("input.txt").readlines()]
 # The * 73 was kind of brute-forced
 # (Any multiplier big enough, 100 or 1000 for example, would work).
 

@@ -1,4 +1,4 @@
-trees = [list(e[:-1]) * 32 for e in open("input.txt").readlines()[:-1]]
+trees = [list(e[:-1]) * 32 for e in open("input.txt").readlines()]
 # The * 32 was kind of brute-forced
 # (Any multiplier big enough, 100 for example, would work).
 

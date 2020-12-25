@@ -1,4 +1,4 @@
-database = open("input.txt").readlines()[:-1]
+database = open("input.txt").readlines()
 passwords = [e.split(" ")[2] for e in database]
 letters = [e.split(" ")[1][:-1] for e in database]
 lowest = [int(e.split("-")[0]) for e in database]
