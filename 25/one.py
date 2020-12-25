@@ -28,9 +28,8 @@ while len(loops) < 2:
 value = 1
 for i in range(loops["door"]):
 	value = hash(value, card_pkey)
-assert value == 18433997
-
 print(f"Encription key (card): {value}")
+assert value == 18433997
 
 value = 1
 for i in range(loops["card"]):
